@@ -1,4 +1,4 @@
-package com.springguru.spring5mvcrest;
+package com.springframework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
