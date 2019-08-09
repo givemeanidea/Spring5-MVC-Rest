@@ -59,7 +59,7 @@ public class CustomerServiceTest {
         customer.setFirstname(FIRSTNAME);
         customer.setLastname(LASTNAME);
 
-        when(customerRepository.findById(anyLong())).thenReturn(java.util.Optional.of(customer));
+        when(customerRepository.findById(anyLong())).thenReturn(java.util.Optional.ofNullable(customer));
 
         //when
         CustomerDTO customerDTO = customerService.getCustomerById(ID);
