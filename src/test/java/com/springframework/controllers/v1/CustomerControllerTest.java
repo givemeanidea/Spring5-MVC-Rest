@@ -43,12 +43,10 @@ public class CustomerControllerTest {
     public void getAllCustomers() throws Exception {
 
         CustomerDTO customer1 = new CustomerDTO();
-        customer1.setId(1L);
         customer1.setFirstName("Daniel");
         customer1.setLastName("Byrne");
 
         CustomerDTO customer2 = new CustomerDTO();
-        customer2.setId(2L);
         customer2.setFirstName("Jim");
         customer2.setLastName("Patton");
 
@@ -65,7 +63,6 @@ public class CustomerControllerTest {
     @Test
     public void getCustomerById() throws Exception {
         CustomerDTO customer1 = new CustomerDTO();
-        customer1.setId(1L);
         customer1.setFirstName("Daniel");
         customer1.setLastName("Byrne");
 

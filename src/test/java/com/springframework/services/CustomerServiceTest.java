@@ -63,7 +63,6 @@ public class CustomerServiceTest {
         CustomerDTO customerDTO = customerService.getCustomerById(ID);
 
         //then
-        assertEquals(ID, customerDTO.getId());
         assertEquals(FIRSTNAME, customerDTO.getFirstName());
         assertEquals(LASTNAME, customerDTO.getLastName());
     }
