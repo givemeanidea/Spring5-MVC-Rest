@@ -2,6 +2,7 @@ package com.springframework.services;
 
 import com.springframework.api.v1.mapper.VendorMapper;
 import com.springframework.api.v1.model.VendorDTO;
+import com.springframework.api.v1.model.VendorListDTO;
 import com.springframework.controllers.v1.VendorController;
 import com.springframework.domain.Vendor;
 import com.springframework.repositories.VendorRepository;
@@ -22,9 +23,9 @@ public class VendorServiceImpl implements VendorService {
     }
 
     @Override
-    public List<VendorDTO> getAllVendors() {
-
-        return vendorRepository.findAll()
+    public VendorListDTO getAllVendors() {
+        List<VendorDTO> vendorDTOS = vendorRepository
+                .findAll()
                 .stream()
                 .map(vendor -> {
                     VendorDTO vendorDTO = vendorMapper.vendorToVendorDTO(vendor);
@@ -32,6 +33,8 @@ public class VendorServiceImpl implements VendorService {
                     return vendorDTO;
                 })
                 .collect(Collectors.toList());
+
+        return new VendorListDTO(vendorDTOS);
     }
 
     @Override

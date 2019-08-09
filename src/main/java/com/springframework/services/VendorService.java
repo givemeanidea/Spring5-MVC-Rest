@@ -1,12 +1,11 @@
 package com.springframework.services;
 
 import com.springframework.api.v1.model.VendorDTO;
-
-import java.util.List;
+import com.springframework.api.v1.model.VendorListDTO;
 
 public interface VendorService {
 
-    List<VendorDTO> getAllVendors();
+    VendorListDTO getAllVendors();
 
     VendorDTO getVendorById(Long id);
 

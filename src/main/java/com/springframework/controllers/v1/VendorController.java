@@ -3,11 +3,10 @@ package com.springframework.controllers.v1;
 import com.springframework.api.v1.model.VendorDTO;
 import com.springframework.api.v1.model.VendorListDTO;
 import com.springframework.services.VendorService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("api/v1/vendors")
 public class VendorController {
 
@@ -19,32 +18,38 @@ public class VendorController {
     }
 
     @GetMapping
-    public ResponseEntity<VendorListDTO> getAllVendors() {
-        return null;
+    @ResponseStatus(HttpStatus.OK)
+    public VendorListDTO getVendorList(){
+        return vendorService.getAllVendors();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VendorListDTO> getVendorById(@PathVariable Long id) {
-        return null;
+    @ResponseStatus(HttpStatus.OK)
+    public VendorDTO getVendorById(@PathVariable Long id) {
+        return vendorService.getVendorById(id);
     }
 
     @PostMapping
-    public ResponseEntity<VendorListDTO> createNewVendor(@RequestBody VendorDTO vendorDTO) {
-        return null;
+    @ResponseStatus(HttpStatus.CREATED)
+    public VendorDTO createNewVendor(@RequestBody VendorDTO vendorDTO) {
+        return vendorService.createNewVendor(vendorDTO);
     }
 
     @PutMapping({"/{id}"}) // todo are outer curly brackets required???
-    public ResponseEntity<VendorListDTO> updateVendor(@PathVariable Long id, @RequestBody VendorDTO vendorDTO) {
-        return null;
+    @ResponseStatus(HttpStatus.OK)
+    public VendorDTO updateVendor(@PathVariable Long id, @RequestBody VendorDTO vendorDTO) {
+        return vendorService.saveVendorByDTO(id, vendorDTO);
     }
 
     @PatchMapping({"/{id}"})
-    public ResponseEntity<VendorListDTO> patchVendor(@PathVariable Long id, @RequestBody VendorDTO vendorDTO) {
-        return null;
+    @ResponseStatus(HttpStatus.OK)
+    public VendorDTO patchVendor(@PathVariable Long id, @RequestBody VendorDTO vendorDTO) {
+        return vendorService.patchVendor(id, vendorDTO);
     }
 
     @DeleteMapping({"/{id}"})
-    public ResponseEntity<Void> deleteVendor(@PathVariable Long id) {
-        return null;
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteVendor(@PathVariable Long id) {
+        vendorService.deleteVendorById(id);
     }
 }
