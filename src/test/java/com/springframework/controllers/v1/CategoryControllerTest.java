@@ -1,6 +1,7 @@
 package com.springframework.controllers.v1;
 
 import com.springframework.api.v1.model.CategoryDTO;
+import com.springframework.controllers.RestResponseEntityExceptionHandler;
 import com.springframework.services.CategoryService;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +39,9 @@ public class CategoryControllerTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        mockMvc = MockMvcBuilders.standaloneSetup(categoryController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(categoryController)
+                .setControllerAdvice(new RestResponseEntityExceptionHandler())
+                .build();
 
     }
 
