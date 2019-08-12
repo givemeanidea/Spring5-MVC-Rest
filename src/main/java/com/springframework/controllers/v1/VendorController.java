@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@Api(description = "This is my vendor API")
+@Api(tags = "Vendor")
 @RestController
 @RequestMapping("api/v1/vendors")
 public class VendorController {
