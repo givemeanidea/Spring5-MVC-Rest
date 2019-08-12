@@ -6,14 +6,10 @@ import com.springframework.services.CategoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Api(tags = "Category")
-@Controller
+@RestController
 @RequestMapping("api/v1/categories")
 public class CategoryController {
 
@@ -26,16 +22,15 @@ public class CategoryController {
 
     @ApiOperation(value = "View list of Categories")
     @GetMapping
-    public ResponseEntity<CategoryListDTO> getAllCategories() {
-        return new ResponseEntity<>
-                 (new CategoryListDTO(categoryService.getAllCategories()), HttpStatus.OK);
+    @ResponseStatus(HttpStatus.OK)
+    public CategoryListDTO getAllCategories() {
+        return new CategoryListDTO(categoryService.getAllCategories());
     }
 
     @ApiOperation(value = "Get a Category by name")
     @GetMapping("{name}")
-    public ResponseEntity<CategoryDTO> getCategoryByName(@PathVariable String name) {
-        return new ResponseEntity<>(
-                categoryService.getCategoryByName(name), HttpStatus.OK
-        );
+    @ResponseStatus(HttpStatus.OK)
+    public CategoryDTO getCategoryByName(@PathVariable String name) {
+        return categoryService.getCategoryByName(name);
     }
 }
